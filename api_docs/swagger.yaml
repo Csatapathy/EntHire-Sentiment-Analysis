@@ -1,0 +1,102 @@
+openapi: "3.0.0"
+
+info:
+  version: "1.1.0"
+  title: A Sentiment Analysis API
+  description: This is an API that takes in strings of text and/or tweets and predicts the sentiment attached to it, whether the string is positive or negative in inference.
+  contact:
+      email: satapathy.chandan1008@gmail.com
+externalDocs:
+  description: Find out more about Swagger
+  url: 'http://swagger.io'
+
+
+
+paths:
+
+  /predict:
+
+    post:
+      summary: Get sentiment of a tweet ,ie, if it's a positive tweet or a negative tweet.
+      operationId: getSentiment
+      requestBody:
+        required: true
+        description: The array of strings that need to be analysed.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Get_Predictions'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Get_Predictions'
+
+      responses:
+        '200':
+          description: Operation Successful.
+          content:
+            application/json:
+              schema:
+                type: object
+
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '500':
+          $ref: '#/components/responses/ValidationError'
+  /home:
+
+    get:
+      summary: Go to the Starting Page.
+      operationId: goHome
+
+
+      responses:
+        '200':
+          description: Operation Successful.
+          content:
+            application/json:
+              schema:
+                type: object
+
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '500':
+          $ref: '#/components/responses/ValidationError'
+
+
+components:
+
+  schemas:
+    Text:
+      type: string
+
+    Get_Predictions:
+      type: array
+      items:
+        $ref: '#/components/schemas/Text'
+
+      example:
+        {"data":["text1","text2","text3","text4"]}
+
+
+    Error:
+      type: object
+      required:
+        - message
+      properties:
+        field:
+          type: string
+        message:
+          type: string
+        exception:
+          type: string
+
+  responses:
+
+    ValidationError:
+      description: OpenAPI request/response validation failed
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: "#/components/schemas/Error"
