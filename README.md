@@ -22,10 +22,10 @@ The data is in "airline_sentiment_analysis.csv". It has 2 columns:
 
 1. api_docs/swagger.yaml : this file contains the YAML code for the SWAGGER documentation.
 2. Exploratory_data_analysis.ipynb : This Jupyter Notebook is where all the data analysis has been done.
-3. model.py : contains the MAIN NLPModel() class that has various methods to train and predict data. 
-4. build_model.py : is the helper class to model.py that helps build and train the model
-5. inference.py : is the class that helps in inferring the results of the data in api.py
-6. api.py : is the main API that takes in input at http://localhost:6543/predict and returns the predictions. This also creates the model if the pickled data isn.t present.
+3. model.py : contains the main NLPModel() class that has various methods to train and predict data using Pipelines. 
+4. build_model.py : is the helper class to model.py that helps input data, build, train and return the model pipeline. This also creates the model if the pickled data isn't present.
+5. inference.py : is the class that helps in predicting and inferring the results of the data recieved by api.py.
+6. api.py : is the main API that takes in input at http://localhost:6543/predict and returns the predictions.
 
 ## Project Overview:
 For this project, we move forward in 4 steps:
