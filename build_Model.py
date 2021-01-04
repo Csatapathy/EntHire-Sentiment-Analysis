@@ -17,7 +17,7 @@ def take_input():
         data.columns = ['text', 'sentiment']
         return data
 
-class build():
+class build:
 
     def __init__(self):
         self.data=take_input()
